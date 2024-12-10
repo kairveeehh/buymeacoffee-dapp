@@ -62,7 +62,7 @@ export const BMC = () => {
             Tip Amount
           </label>
           <p style={{ fontSize: "0.9rem", color: "#888", marginBottom: "1rem" }}>
-            *Must be greater than 0.
+            *greater than 0 ser.
           </p>
           <input
             type="number"
