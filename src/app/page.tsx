@@ -1,3 +1,4 @@
+import { Github, X } from 'lucide-react';
 import { ConnectEmbed } from "./thirdweb";
 import { client } from "./client";
 import { chain } from "./chain";
@@ -25,15 +26,38 @@ export default function Home() {
             fontFamily: "'Poppins', sans-serif",
             fontWeight: "bold",
             padding: "1rem",
-       
             maxWidth: "500px",
-          
           }}
         >
           Buy Me A Coffee ☕
-
         </h1>
-        
+        <div
+          style={{
+            marginTop: "2rem",
+            display: "flex",
+            gap: "1rem",
+            justifyContent: "center",
+          }}
+        >
+          <a
+            href="https://github.com/kairveeehh/buymeacoffee-dapp" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ color: "#333", fontSize: "3rem" }}
+          >
+            <Github />
+          </a>
+
+          <a
+            href="https://x.com/kairveee"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#333", fontSize: "3rem" }}
+          >
+            <X />
+          </a>
+        </div>
+
         <div
           style={{
             marginBottom: "2rem",
@@ -44,8 +68,9 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          <ConnectEmbed client={client} chain={chain}   />
+          <ConnectEmbed client={client} chain={chain} />
         </div>
+
         <div
           style={{
             width: "100%",
@@ -54,6 +79,8 @@ export default function Home() {
         >
           <BMC />
         </div>
+
+       
       </div>
     </>
   );
