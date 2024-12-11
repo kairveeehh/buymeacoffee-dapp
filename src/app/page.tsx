@@ -30,9 +30,10 @@ export default function Home() {
           
           }}
         >
-          Juice pila do .. 
+          Buy Me A Coffee ☕
+
         </h1>
-        <p> mosambi ka </p>
+        
         <div
           style={{
             marginBottom: "2rem",
