@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from 'react';
 import { User, Coffee, Zap, Award, Settings } from 'lucide-react';
 
@@ -76,75 +75,246 @@ const DecentralizedCoffeeCreatorPage: React.FC<CreatorPageProps> = ({
     setSupportTiers(supportTiers.filter(tier => tier.id !== id));
   };
 
+  // Inline styles
+  const styles = {
+    container: {
+      maxWidth: '64rem',
+      margin: '0 auto',
+      padding: '1.5rem',
+      backgroundColor: 'white',
+      borderRadius: '0.75rem',
+   
+      display: 'flex',
+      flexDirection: 'column' as 'column',
+      gap: '1.5rem'
+    },
+    creatorProfileSection: {
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '1rem'
+    },
+    userIcon: {
+      width: '4rem',
+      height: '4rem',
+      marginRight: '1rem',
+      color: '#2563eb'
+    },
+    creatorNameInput: {
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#1f2937',
+      width: '100%',
+      marginBottom: '0.5rem',
+      padding: '0.25rem 0.5rem',
+   
+      borderRadius: '0.25rem'
+    },
+    descriptionTextarea: {
+      color: '#4b5563',
+      width: '100%',
+      padding: '0.25rem 0.5rem',
+
+      borderRadius: '0.25rem'
+    },
+    walletAddressSection: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem'
+    },
+    coffeeIcon: {
+      width: '1.5rem',
+      height: '1.5rem',
+      color: '#3b82f6'
+    },
+    walletAddressInput: {
+      flexGrow: 1,
+      padding: '0.5rem',
+ 
+      borderRadius: '0.25rem'
+    },
+    supportTiersHeader: {
+      fontSize: '1.25rem',
+      fontWeight: 'bold',
+      marginBottom: '1rem',
+      display: 'flex',
+      alignItems: 'center'
+    },
+    zapIcon: {
+      width: '1.5rem',
+      height: '1.5rem',
+      marginRight: '0.5rem',
+      color: '#eab308'
+    },
+    tierContainer: {
+  
+      borderRadius: '0.5rem',
+      padding: '1rem',
+      marginBottom: '1rem',
+      
+      position: 'relative' as 'relative'
+    },
+    tierHeaderContainer: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    tierNameInput: {
+      fontSize: '1.125rem',
+      fontWeight: 'bold',
+      flexGrow: 1,
+      marginRight: '0.5rem',
+      padding: '0.25rem',
+      border: '1px solid #d1d5db',
+      borderRadius: '0.25rem'
+    },
+    removeButton: {
+      color: '#ef4444',
+      padding: '0.25rem',
+      borderRadius: '0.25rem',
+      ':hover': {
+        backgroundColor: '#fee2e2'
+      }
+    },
+    amountSection: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem'
+    },
+    amountInput: {
+      width: '6rem',
+      padding: '0.25rem',
+      border: '1px solid #d1d5db',
+      borderRadius: '0.25rem'
+    },
+    perksHeader: {
+      fontWeight: 'bold',
+      marginBottom: '0.5rem',
+      display: 'flex',
+      alignItems: 'center'
+    },
+    awardIcon: {
+      width: '1rem',
+      height: '1rem',
+      marginRight: '0.25rem',
+      color: '#22c55e'
+    },
+    perkInput: {
+      flexGrow: 1,
+      padding: '0.25rem',
+      border: '1px solid #d1d5db',
+      borderRadius: '0.25rem'
+    },
+    addPerkButton: {
+      width: '100%',
+      color: '#3b82f6',
+      padding: '0.5rem',
+      marginTop: '0.5rem',
+      border: '1px solid #d1d5db',
+      borderRadius: '0.25rem',
+      ':hover': {
+        backgroundColor: '#dbeafe'
+      }
+    },
+    addTierButton: {
+      width: '100%',
+      backgroundColor: '#3b82f6',
+      color: 'white',
+      padding: '0.75rem',
+      borderRadius: '0.25rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '0.5rem',
+      ':hover': {
+        backgroundColor: '#2563eb'
+      }
+    },
+    generateButton: {
+      width: '100%',
+      backgroundColor: '#22c55e',
+      color: 'white',
+      padding: '1rem',
+      borderRadius: '0.25rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '0.5rem',
+      ':hover': {
+        backgroundColor: '#16a34a'
+      }
+    }
+  };
+
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-lg">
+    <div style={styles.container}>
       {/* Creator Profile Section */}
-      <div className="flex items-center mb-8">
-        <User className="w-16 h-16 mr-4 text-blue-600" />
-        <div>
+      <div style={styles.creatorProfileSection}>
+        <User style={styles.userIcon} />
+        <div style={{flexGrow: 1}}>
           <input 
             type="text"
             value={creatorName}
             onChange={(e) => setCreatorName(e.target.value)}
             placeholder="Your Name/Brand"
-            className="text-2xl font-bold text-gray-800 w-full mb-2"
+            style={styles.creatorNameInput}
           />
           <textarea 
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Tell your supporters about your work and mission"
-            className="text-gray-600 w-full"
+            style={styles.descriptionTextarea}
+            rows={3}
           />
         </div>
       </div>
 
       {/* Wallet Address */}
-      <div className="mb-6 flex items-center">
-        <Coffee className="w-6 h-6 mr-2 text-blue-500" />
+      <div style={styles.walletAddressSection}>
+        <Coffee style={styles.coffeeIcon} />
         <input 
           type="text"
           value={walletAddress}
           onChange={(e) => setWalletAddress(e.target.value)}
           placeholder="Your Crypto Wallet Address"
-          className="w-full p-2 border rounded"
+          style={styles.walletAddressInput}
         />
       </div>
 
       {/* Support Tiers */}
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold mb-4 flex items-center">
-          <Zap className="w-6 h-6 mr-2 text-yellow-500" />
+      <div>
+        <h2 style={styles.supportTiersHeader}>
+          <Zap style={styles.zapIcon} />
           Support Tiers
         </h2>
         {supportTiers.map((tier) => (
           <div 
             key={tier.id} 
-            className="border rounded-lg p-4 mb-4 bg-gray-50 relative"
+            style={styles.tierContainer}
           >
-            <div className="flex justify-between items-center mb-2">
+            <div style={styles.tierHeaderContainer}>
               <input 
                 type="text"
                 value={tier.name}
                 onChange={(e) => updateSupportTier(tier.id, { name: e.target.value })}
-                className="text-lg font-bold w-full mr-2"
+                style={styles.tierNameInput}
               />
               {supportTiers.length > 1 && (
                 <button 
                   onClick={() => removeSupportTier(tier.id)}
-                  className="text-red-500 hover:bg-red-100 p-1 rounded"
+                  style={styles.removeButton}
                 >
                   Remove
                 </button>
               )}
             </div>
             
-            <div className="flex items-center mb-2">
-              <span className="mr-2">Amount:</span>
+            <div style={styles.amountSection}>
+              <span>Amount:</span>
               <input 
                 type="number"
                 value={tier.amount}
                 onChange={(e) => updateSupportTier(tier.id, { amount: parseFloat(e.target.value) })}
-                className="w-24 p-1 border rounded"
+                style={styles.amountInput}
               />
             </div>
             
@@ -152,17 +322,18 @@ const DecentralizedCoffeeCreatorPage: React.FC<CreatorPageProps> = ({
               value={tier.description}
               onChange={(e) => updateSupportTier(tier.id, { description: e.target.value })}
               placeholder="Tier description"
-              className="w-full mb-2 p-1 border rounded"
+              style={{...styles.descriptionTextarea, marginTop: '0.5rem'}}
+              rows={2}
             />
             
             {/* Perks Management */}
             <div>
-              <h3 className="font-semibold mb-2 flex items-center">
-                <Award className="w-4 h-4 mr-1 text-green-500" />
+              <h3 style={styles.perksHeader}>
+                <Award style={styles.awardIcon} />
                 Perks
               </h3>
               {tier.perks.map((perk, index) => (
-                <div key={index} className="flex items-center mb-1">
+                <div key={index} style={{display: 'flex', alignItems: 'center', marginBottom: '0.25rem', gap: '0.5rem'}}>
                   <input 
                     type="text"
                     value={perk}
@@ -171,14 +342,14 @@ const DecentralizedCoffeeCreatorPage: React.FC<CreatorPageProps> = ({
                       newPerks[index] = e.target.value;
                       updateSupportTier(tier.id, { perks: newPerks });
                     }}
-                    className="w-full p-1 border rounded mr-2"
+                    style={styles.perkInput}
                   />
                   <button
                     onClick={() => {
                       const newPerks = tier.perks.filter((_, i) => i !== index);
                       updateSupportTier(tier.id, { perks: newPerks });
                     }}
-                    className="text-red-500 hover:bg-red-100 p-1 rounded"
+                    style={styles.removeButton}
                   >
                     Remove
                   </button>
@@ -189,7 +360,7 @@ const DecentralizedCoffeeCreatorPage: React.FC<CreatorPageProps> = ({
                   const newPerks = [...tier.perks, 'New Perk'];
                   updateSupportTier(tier.id, { perks: newPerks });
                 }}
-                className="text-blue-500 hover:bg-blue-100 p-2 rounded mt-2"
+                style={styles.addPerkButton}
               >
                 Add Perk
               </button>
@@ -200,20 +371,20 @@ const DecentralizedCoffeeCreatorPage: React.FC<CreatorPageProps> = ({
         {/* Add New Tier Button */}
         <button
           onClick={addSupportTier}
-          className="w-full p-3 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center justify-center"
+          style={styles.addTierButton}
         >
-          <Settings className="w-5 h-5 mr-2" />
-          Add New Support Tier
+          <Settings style={{width: '1.25rem', height: '1.25rem'}} />
+          <span>Add New Support Tier</span>
         </button>
       </div>
 
       {/* Preview/Generate Button */}
-      <div className="mt-6">
+      <div>
         <button 
-          className="w-full p-4 bg-green-500 text-white rounded hover:bg-green-600 flex items-center justify-center"
+          style={styles.generateButton}
         >
-          <Zap className="w-6 h-6 mr-2" />
-          Generate Decentralized Page
+          <Zap style={{width: '1.5rem', height: '1.5rem'}} />
+          <span>Generate Decentralized Page</span>
         </button>
       </div>
     </div>
