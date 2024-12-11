@@ -17,7 +17,7 @@ interface CreatorPageProps {
   initialWalletAddress?: string;
 }
 
-const DecentralizedCoffeeCreatorPage: React.FC<CreatorPageProps> = ({
+const demo: React.FC<CreatorPageProps> = ({
   initialName = '',
   initialDescription = '',
   initialWalletAddress = ''
@@ -220,4 +220,4 @@ const DecentralizedCoffeeCreatorPage: React.FC<CreatorPageProps> = ({
   );
 };
 
-export default DecentralizedCoffeeCreatorPage;
+export default demo;
